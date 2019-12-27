@@ -1,4 +1,4 @@
-resource aws_launch_configuration "my-first-launch-conf" {
+resource "aws_launch_configuration" "my-first-launch-conf" {
 name = "${var.cluster}webserver-launch"
 image_id = "${var.ami}"
 instance_type = "${var.instance_type}"
