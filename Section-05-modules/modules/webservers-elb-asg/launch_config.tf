@@ -20,4 +20,4 @@ user_data="${file("${path.module}/user_data.sh")}"
 # 	EOF
 }
 
-user_data="${file("user_data.sh")}"
+#user_data="${file("user_data.sh")}"
