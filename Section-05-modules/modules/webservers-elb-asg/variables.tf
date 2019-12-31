@@ -1,4 +1,6 @@
-
+variable "environment" {
+description= "type of environment , prod or stg or dev "
+}
 variable "instance_type" {
   description = "instance type ..."
   default = "t2.micro"
