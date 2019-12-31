@@ -9,7 +9,7 @@ resource "aws_autoscaling_group" "my_first_asg" {
 
     tag {
 		key = "Name"
-		value = "terraform-asg"
+		value = "terraform-asg-${var.environment}"
 		propagate_at_launch = true  
 	}
 
