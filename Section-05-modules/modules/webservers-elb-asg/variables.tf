@@ -3,7 +3,7 @@ description= "type of environment , prod or stg or dev "
 default="stg"
 }
 variable "zone_id" {
-default="NONE"
+default="Z0880452379JKI7FIR34V"
 }
 variable "instance_type" {
   description = "instance type ..."
