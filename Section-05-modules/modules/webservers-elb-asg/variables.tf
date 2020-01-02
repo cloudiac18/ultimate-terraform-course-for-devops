@@ -2,6 +2,9 @@ variable "environment" {
 description= "type of environment , prod or stg or dev "
 default="stg"
 }
+variable "zone_id" {
+default="NONE"
+}
 variable "instance_type" {
   description = "instance type ..."
   default = "t2.micro"
