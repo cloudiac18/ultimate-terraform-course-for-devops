@@ -1,7 +1,7 @@
 resource "aws_instance" "My-Webserver" {
  count = 3
- ami = "${var.ami}" 
- instance_type = "${var.instance_type}"
+ ami = var.ami
+ instance_type = var.instance_type
  vpc_security_group_ids = ["${aws_security_group.webserver_sg.id}"]
  tags = {
 	 Name = "My-Webserver-${count.index}"
@@ -15,5 +15,7 @@ resource "aws_instance" "My-Webserver" {
         /usr/bin/apt-get install apache2 -y
         /usr/sbin/ufw allow in "Apache Full"
 	/bin/echo "Hello world " >/var/www/html/index.html
+        instance_ip=`curl http://169.254.169.254/latest/meta-data/public-ipv4`
+        echo $instance_ip >>/var/www/html/index.html
 	EOF
 }
