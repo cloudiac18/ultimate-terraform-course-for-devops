@@ -1,11 +1,11 @@
 resource "aws_elb" "my_first_elb" {
     name = "terraform-elb"
-    availability_zones = "${var.azs}"
-    security_groups=["${aws_security_group.elb_sg.id}"]
+    availability_zones = var.azs
+    security_groups=[ aws_security_group.elb_sg.id ]
     listener {
         lb_port=80
         lb_protocol ="http"
-        instance_port = "${var.server_port}"
+        instance_port = var.server_port
         instance_protocol= "http"
     }
     health_check {

@@ -1,7 +1,7 @@
 resource aws_launch_configuration "my-first-launch-conf" {
 name = "webserver-launch"
-image_id = "${var.ami}"
-instance_type = "${var.instance_type}"
+image_id = var.ami
+instance_type = var.instance_type
 security_groups=["${aws_security_group.webserver_sg.id}"]
 key_name = "terraform"
 user_data = <<-EOF
@@ -12,5 +12,7 @@ user_data = <<-EOF
         /usr/bin/apt-get install apache2 -y
         /usr/sbin/ufw allow in "Apache Full"
 	/bin/echo "Hello world " >/var/www/html/index.html
+        instance_ip=`curl http://169.254.169.254/latest/meta-data/public-ipv4`
+        echo $instance_ip >>/var/www/html/index.html
 	EOF
 }

@@ -1,23 +1,23 @@
 resource "aws_security_group" "webserver_sg" { 
 
     ingress {
-        from_port = "${var.server_port}"
-        to_port = "${var.server_port}"
+        from_port = var.server_port
+        to_port = var.server_port
         protocol = "tcp"
-        cidr_blocks = [ "${var.my_public_ip}"]
+        cidr_blocks = [ var.my_public_ip ]
     }
 
     ingress {
-        from_port = "${var.ssh_port}"
-        to_port = "${var.ssh_port}"
+        from_port = var.ssh_port
+        to_port = var.ssh_port
         protocol = "tcp"
-        cidr_blocks = [ "${var.my_public_ip}"]
+        cidr_blocks = [ var.my_public_ip ]
     }
    ingress {
-        from_port = "${var.server_port}"
-        to_port = "${var.server_port}"
+        from_port = var.server_port
+        to_port = var.server_port
         protocol = "tcp"
-        security_groups = [ "${aws_security_group.elb_sg.id}"]
+        security_groups = [ aws_security_group.elb_sg.id ]
     } 
 
 egress {
