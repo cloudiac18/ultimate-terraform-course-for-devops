@@ -13,6 +13,20 @@ resource "aws_iam_policy" "s3_policy" {
       ],
       "Effect": "Allow",
       "Resource": "*"
+    },
+    {
+      "Action": [
+        "ec2:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Action": [
+        "route53:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
     }
   ]
 }

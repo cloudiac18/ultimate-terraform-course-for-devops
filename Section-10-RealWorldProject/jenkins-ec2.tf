@@ -1,12 +1,13 @@
 resource "aws_instance" "jenkins" {
-  ami           = var.ami
-  instance_type = "t2.micro"
-  key_name = "terraform"
-vpc_security_group_ids = [ aws_security_group.allow_login.id ]
-tags = {
+  ami                    = var.ami
+  instance_type          = "t2.micro"
+  key_name               = "terraform"
+  iam_instance_profile   = "${aws_iam_instance_profile.ec2_profile.name}"
+  vpc_security_group_ids = [aws_security_group.allow_login.id]
+  tags = {
     Name = var.project
   }
-user_data = <<EOC
+  user_data = <<EOC
 #!/bin/bash -xe
 exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
 /usr/bin/wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
@@ -19,5 +20,7 @@ DEBIAN_FRONTEND=noninteractive /usr/bin/apt-get upgrade -yq
 /bin/systemctl status jenkins
 /usr/sbin/ufw allow 8080
 /usr/sbin/ufw status
+/usr/bin/apt install python3-pip -y
+pip3 install awscli
 EOC
 }

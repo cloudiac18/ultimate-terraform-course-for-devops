@@ -1,9 +1,10 @@
-resource "aws_instance" "hellow-world" {
+resource "aws_instance" "hello-world" {
  ami = "${var.ami}" 
  instance_type = "${var.instance_type}"
  vpc_security_group_ids = ["${aws_security_group.webserver_sg.id}"]
  availability_zone = "${var.az}"
  key_name = "terraform"
+ iam_instance_profile = "${aws_iam_instance_profile.ec2_profile.name}"
  tags = {
 	 Name = "Hello world"
  }
