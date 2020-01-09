@@ -7,6 +7,7 @@ resource "aws_instance" "hello-world" {
  iam_instance_profile = "${aws_iam_instance_profile.ec2_profile.name}"
  tags = {
 	 Name = "Hello world"
+         OwnerEmail = "terraform@ilearnxl.com"
  }
  user_data = <<-EOF
  #!/bin/bash
