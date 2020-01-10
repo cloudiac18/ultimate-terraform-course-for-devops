@@ -22,5 +22,11 @@ DEBIAN_FRONTEND=noninteractive /usr/bin/apt-get upgrade -yq
 /usr/sbin/ufw status
 /usr/bin/apt install python3-pip -y
 pip3 install awscli
+apt install unzip
+wget -q https://releases.hashicorp.com/terraform/0.11.6/terraform_0.11.6_linux_amd64.zip
+unzip terraform_0.11.6_linux_amd64.zip
+mv terraform /usr/local/bin/terraform
+terraform version
+echo "#########   all commands executed successfuly !! ########## "
 EOC
 }
