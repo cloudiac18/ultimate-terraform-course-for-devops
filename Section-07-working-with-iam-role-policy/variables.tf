@@ -2,13 +2,13 @@ variable "region" {
   default = "us-east-1"
 }
 variable "http_port" {
-    default = 80
+  default = 80
 }
 variable "ssh_port" {
-    default = 22
+  default = 22
 }
 variable "my_system" {
-    default = "98.207.180.245/32"
+  default = "98.207.180.245/32"
 }
 
 variable "ami" {
@@ -20,7 +20,7 @@ variable "instance_type" {
 }
 
 variable "az" {
-  default="us-east-1a"
+  default = "us-east-1a"
 }
 
 
