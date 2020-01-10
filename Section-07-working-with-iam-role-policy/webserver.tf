@@ -8,6 +8,7 @@ resource "aws_instance" "hello-world" {
  tags = {
 	 Name = "Hello world"
          OwnerEmail = "terraform@ilearnxl.com"
+         Project = "iam-role-demo"
  }
  user_data = <<-EOF
  #!/bin/bash
