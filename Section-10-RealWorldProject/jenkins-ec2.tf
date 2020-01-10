@@ -6,6 +6,7 @@ resource "aws_instance" "jenkins" {
   vpc_security_group_ids = [aws_security_group.allow_login.id]
   tags = {
     Name = var.project
+    OS = "ubuntu"
   }
   user_data = <<EOC
 #!/bin/bash -xe
