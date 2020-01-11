@@ -2,9 +2,11 @@ variable "environment" {
 description= "type of environment , prod or stg or dev "
 default="stg"
 }
-variable "zone_id" {
-default="Z0880452379JKI7FIR34V"
+
+variable "vpc_id" {
+description = "provide vpc_id"
 }
+
 variable "instance_type" {
   description = "instance type ..."
   default = "t2.micro"
