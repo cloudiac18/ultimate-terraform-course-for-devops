@@ -1,20 +1,11 @@
 resource "aws_instance" "hellow-world" {
-    ami = "${var.ami}" 
+ ami = "${var.ami}" 
+ count = 3
  instance_type = "${var.instance_type}"
  vpc_security_group_ids = ["${aws_security_group.webserver_sg.id}"]
  key_name = "terraform"
  tags = {
-	 Name = "Hello world"
- }
-
- provisioner "local-exec" {
-    command = "echo ${self.private_ip} > webserver_private_ip.txt"
-    # command = "echo ${self.public_ip} > webserver_public_ip.txt"
-    on_failure = continue
- }
- provisioner "local-exec" {
-    command = "echo ${self.public_ip} > webserver_public_ip.txt"
-    on_failure = continue
+	 Name = "Hello world-${count.index}"
  }
  user_data = <<-EOF
  #!/bin/bash
